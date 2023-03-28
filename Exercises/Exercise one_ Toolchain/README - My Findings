@@ -1,0 +1,4 @@
+After running each of the make files, i have noticed that the output from the file is different each time.
+The first make file output in the console what thread it launched 3x from and the output in different order each thread that was launched.
+The second make file output almost in numerical order the first 4 were scrambled and coming towards the end of the file it output that it launched from main.
+The third and final make file output in complete different order and repeat itself on the first output.
