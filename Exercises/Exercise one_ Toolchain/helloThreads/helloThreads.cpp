@@ -1,3 +1,9 @@
+/*
+    Adam Mcguigan 02/02/2023
+    GNU GENERAL PUBLIC LICENSE
+    Version 3, 29 June 2007
+*/
+
 /*! \file hellothreads.cpp
     \brief A Documented file.
 

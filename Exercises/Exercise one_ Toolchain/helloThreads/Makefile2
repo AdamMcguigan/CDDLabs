@@ -1,4 +1,4 @@
-#Joseph Kehoe 13/9/2017
+#Adam Mcguigan 02/02/2023
 #Second improved Makefile
 #Used to contain commands to compile projects
 #Equivalent(?) to a project file in VStudio -- only better!
