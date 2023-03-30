@@ -7,6 +7,7 @@
 // Code:
 #include "Semaphore.h"
 #include "Barrier.h"
+#include <iostream>
 Barrier::Barrier(int numThreads)
 {
     this->numThreads = numThreads;
@@ -49,5 +50,5 @@ Barrier::~Barrier()
     delete barrier2;
 }
 
-// 
+//
 // Barrier.cpp ends here
