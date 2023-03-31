@@ -1,4 +1,3 @@
-#include "Barrier.h"
 #include "Event.h"
 #include <iostream>
 #include <thread>

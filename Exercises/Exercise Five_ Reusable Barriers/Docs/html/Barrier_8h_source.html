@@ -73,28 +73,27 @@ $(function() {
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    Version 3, 29 June 2007</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">/* Code: */</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef BARRIER_H</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define BARRIER_H</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;Semaphore.h&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classBarrier.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classBarrier.html">Barrier</a>{</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">int</span> numThreads;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">int</span> count;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classSemaphore.html">Semaphore</a> *mutex = <span class="keyword">new</span> <a class="code" href="classSemaphore.html">Semaphore</a>(1);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classSemaphore.html">Semaphore</a> *firstBarrier = <span class="keyword">new</span> <a class="code" href="classSemaphore.html">Semaphore</a>(0);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classSemaphore.html">Semaphore</a> *secondBarrier = <span class="keyword">new</span> <a class="code" href="classSemaphore.html">Semaphore</a>(1);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="classBarrier.html">Barrier</a>(<span class="keywordtype">int</span> numThreads);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keyword">virtual</span> ~<a class="code" href="classBarrier.html">Barrier</a>();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classBarrier.html#a83a9d2e85e98b3d2081538bf0da29b60">wait</a>();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/* Barrier.h ends here */</span></div>
-<div class="ttc" id="aclassBarrier_html"><div class="ttname"><a href="classBarrier.html">Barrier</a></div><div class="ttdef"><b>Definition:</b> Barrier.h:12</div></div>
-<div class="ttc" id="aclassBarrier_html_a83a9d2e85e98b3d2081538bf0da29b60"><div class="ttname"><a href="classBarrier.html#a83a9d2e85e98b3d2081538bf0da29b60">Barrier::wait</a></div><div class="ttdeci">void wait()</div><div class="ttdoc">Inspiration taken from the concurrency slides.</div><div class="ttdef"><b>Definition:</b> Barrier.cpp:19</div></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/* Code: */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef BARRIER_H</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define BARRIER_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;Semaphore.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classBarrier.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classBarrier.html">Barrier</a>{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">int</span> numThreads;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> count;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classSemaphore.html">Semaphore</a> *mutex = <span class="keyword">new</span> <a class="code" href="classSemaphore.html">Semaphore</a>(1);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classSemaphore.html">Semaphore</a> *firstBarrier = <span class="keyword">new</span> <a class="code" href="classSemaphore.html">Semaphore</a>(0);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classSemaphore.html">Semaphore</a> *secondBarrier = <span class="keyword">new</span> <a class="code" href="classSemaphore.html">Semaphore</a>(1);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <a class="code" href="classBarrier.html">Barrier</a>(<span class="keywordtype">int</span> numThreads);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keyword">virtual</span> ~<a class="code" href="classBarrier.html">Barrier</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">void</span> wait();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/* Barrier.h ends here */</span></div>
+<div class="ttc" id="aclassBarrier_html"><div class="ttname"><a href="classBarrier.html">Barrier</a></div><div class="ttdoc">Inspiration taken from the concurrency slides.</div><div class="ttdef"><b>Definition:</b> Barrier.h:15</div></div>
 <div class="ttc" id="aclassSemaphore_html"><div class="ttname"><a href="classSemaphore.html">Semaphore</a></div><div class="ttdoc">A Semaphore Implementation.</div><div class="ttdef"><b>Definition:</b> Semaphore.h:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

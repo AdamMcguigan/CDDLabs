@@ -29,7 +29,10 @@ void taskTwo(std::shared_ptr<Semaphore> theSemaphore){
   std::cout << "second"<<std::endl;
 }
 
+/*! \class Signal
+    \brief implementation of main
 
+*/
 int main(void){
   std::thread threadOne, threadTwo;
   std::shared_ptr<Semaphore> sem( new Semaphore);

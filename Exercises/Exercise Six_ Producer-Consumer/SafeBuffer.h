@@ -3,30 +3,17 @@
  * Filename: SafeBuffer.h
  * Description: 
  * Author: Joseph
- * Maintainer: 
- * Created: Tue Jan  8 12:30:23 2019 (+0000)
+ * Maintainer: Adam Mcguigan
+ * Created: Friday March  31 15:30:23 2023 (+0000)
  * Version: 
  * Package-Requires: ()
- * Last-Updated: Tue Jan  8 12:30:25 2019 (+0000)
- *           By: Joseph
+ * Last-Updated: Friday March  31 15:30:23 2023 (+0000)
+ *           By: Adam
  *     Update #: 1
- * URL: 
- * Doc URL: 
- * Keywords: 
- * Compatibility: 
  * 
  */
 
-/* Commentary: 
- * 
- * 
- * 
- */
 
-/* Change Log:
- * 
- * 
- */
 
 /* This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,6 +31,18 @@
 
 /* Code: */
 
+#pragma once
+#include "Semaphore.h"
+#include "Event.h"
+class SafeBuffer
+{
+    std::mutex mutex;
+    Semaphore *items = new Semaphore(0);
+    Semaphore *spaces = new Semaphore(10);
+    Event localEvent[];
+public:
+    void consume();
+    void put(Event e);
+};
 
 
-/* SafeBuffer.h ends here */

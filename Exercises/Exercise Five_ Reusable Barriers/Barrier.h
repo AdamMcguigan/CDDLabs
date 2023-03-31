@@ -4,6 +4,9 @@
     Version 3, 29 June 2007
 */
 
+/*! \class Barrier
+    \brief A Barrier Implementation
+*/
 /* Code: */
 #ifndef BARRIER_H
 #define BARRIER_H

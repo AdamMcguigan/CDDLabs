@@ -15,7 +15,11 @@ Barrier::Barrier(int numThreads)
 }
 
 /// Inspiration taken from the concurrency slides
-// Stops all semaphores once the first task is finished, it then resumes once all semaphores have reached the same point
+/*! \class Barrier
+    \brief A Barrier Implementation
+    stops all semaphores once the first task is finished, it resumes once all semaphores have reached the same point
+    Information taken from the concurrency slides.
+*/
 void Barrier::wait()
 {
     mutex->Wait();

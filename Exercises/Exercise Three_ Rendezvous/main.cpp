@@ -37,6 +37,9 @@ void taskTwo(std::shared_ptr<Semaphore> firstSem, std::shared_ptr<Semaphore> sec
 	std::cout << "Task Two has left " << std::endl;
 }
 
+/*!
+    \brief implementation of main
+*/
 int main(void) {
 	std::thread threadOne, threadTwo;
 	std::shared_ptr<Semaphore> sem1(new Semaphore);
