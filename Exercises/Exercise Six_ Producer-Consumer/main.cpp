@@ -1,3 +1,8 @@
+/*
+    Adam Mcguigan 02/02/2023
+    GNU GENERAL PUBLIC LICENSE
+    Version 3, 29 June 2007
+*/
 #include <iostream>
 #include <thread>
 #include <vector>
@@ -12,10 +17,10 @@ const int size = 20;
 int characterCount = 0;
 
 
-std::random_device rd;
-std::mt19937 gen(rd());
-std::uniform_int_distribution<int> dist(0, 25);
-std::uniform_real_distribution<double> delay(0, 1);
+std::random_device rd; //Used to seed the other number generator
+std::mt19937 gen(rd()); //Random num generator
+std::uniform_int_distribution<int> dist(0, 25); //used to produce random integer values, uniformly distributed on the closed interval
+std::uniform_real_distribution<double> delay(0, 1); //Generates a uniform (every value is equally probable) floating-point distribution within an output range that is inclusive-exclusive.
 
 /*! \fn producer
     \brief Creates chars and adds them to buffer
@@ -58,7 +63,8 @@ void consumer(std::shared_ptr<SafeBuffer<char>> theBuffer)
     }
 }
 
-int main(void){
+int main(void)
+{
     std::vector<std::thread> producerThreads(num_threads);
     std::vector<std::thread> consumerThreads(num_threads);
 
@@ -81,7 +87,7 @@ int main(void){
     {
           v.join();
     }
-
+    
     for (auto& v : consumerThreads)
     {
         v.join();

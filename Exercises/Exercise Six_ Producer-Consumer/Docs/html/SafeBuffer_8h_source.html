@@ -68,11 +68,11 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">Lab 5: Producer-Consumer</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">Copyright (C) 31/03/2023  Adam Mcguigan</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">    Adam Mcguigan 02/02/2023</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    GNU GENERAL PUBLIC LICENSE</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    Version 3, 29 June 2007</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;Semaphore.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
@@ -98,9 +98,9 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/* SafeBuffer.h ends here */</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="ttc" id="aclassSafeBuffer_html"><div class="ttname"><a href="classSafeBuffer.html">SafeBuffer</a></div><div class="ttdoc">A thread-safe buffer.</div><div class="ttdef"><b>Definition:</b> SafeBuffer.h:14</div></div>
-<div class="ttc" id="aclassSafeBuffer_html_abcc6bddc8f887a743d24361132264c17"><div class="ttname"><a href="classSafeBuffer.html#abcc6bddc8f887a743d24361132264c17">SafeBuffer::put</a></div><div class="ttdeci">void put(T item)</div><div class="ttdoc">Put item in the buffer if no other thread is getting item fron it.</div><div class="ttdef"><b>Definition:</b> SafeBuffer.cpp:20</div></div>
-<div class="ttc" id="aclassSafeBuffer_html_afdba533e3a5ce1d4e75be05bf6410c96"><div class="ttname"><a href="classSafeBuffer.html#afdba533e3a5ce1d4e75be05bf6410c96">SafeBuffer::get</a></div><div class="ttdeci">T get()</div><div class="ttdoc">Get an item from the buffer if no other thead is putting item in it.</div><div class="ttdef"><b>Definition:</b> SafeBuffer.cpp:37</div></div>
-<div class="ttc" id="aclassSemaphore_html"><div class="ttname"><a href="classSemaphore.html">Semaphore</a></div><div class="ttdoc">A Semaphore Implementation.</div><div class="ttdef"><b>Definition:</b> Semaphore.h:15</div></div>
+<div class="ttc" id="aclassSafeBuffer_html_abcc6bddc8f887a743d24361132264c17"><div class="ttname"><a href="classSafeBuffer.html#abcc6bddc8f887a743d24361132264c17">SafeBuffer::put</a></div><div class="ttdeci">void put(T item)</div><div class="ttdoc">Put item in the buffer if no other thread is getting item fron it.</div><div class="ttdef"><b>Definition:</b> SafeBuffer.cpp:21</div></div>
+<div class="ttc" id="aclassSafeBuffer_html_afdba533e3a5ce1d4e75be05bf6410c96"><div class="ttname"><a href="classSafeBuffer.html#afdba533e3a5ce1d4e75be05bf6410c96">SafeBuffer::get</a></div><div class="ttdeci">T get()</div><div class="ttdoc">Get an item from the buffer if no other thead is putting item in it.</div><div class="ttdef"><b>Definition:</b> SafeBuffer.cpp:39</div></div>
+<div class="ttc" id="aclassSemaphore_html"><div class="ttname"><a href="classSemaphore.html">Semaphore</a></div><div class="ttdoc">A Semaphore Implementation.</div><div class="ttdef"><b>Definition:</b> Semaphore.h:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

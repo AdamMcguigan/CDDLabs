@@ -1,7 +1,7 @@
 /*
-Lab 5: Producer-Consumer
-Copyright (C) 31/03/2023  Adam Mcguigan
-
+    Adam Mcguigan 02/02/2023
+    GNU GENERAL PUBLIC LICENSE
+    Version 3, 29 June 2007
 */
 
 #include "SafeBuffer.h"
@@ -16,6 +16,7 @@ SafeBuffer<T>::SafeBuffer(int t_size) :
 {
 }
 
+//Producer will use this
 template <typename T>
 void SafeBuffer<T>::put(T item)
 {
@@ -33,6 +34,7 @@ void SafeBuffer<T>::put(T item)
     m_items.Signal();
 }
 
+//Consumer will use this
 template <typename T>
 T SafeBuffer<T>::get()
 {

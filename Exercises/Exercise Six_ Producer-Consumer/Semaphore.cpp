@@ -1,3 +1,8 @@
+/*
+    Adam Mcguigan 02/02/2023
+    GNU GENERAL PUBLIC LICENSE
+    Version 3, 29 June 2007
+*/
 #include "Semaphore.h"
 /*! \class Semaphore
     \brief A Semaphore Implementation
@@ -5,9 +10,6 @@
    Uses C++11 features such as mutex and condition variables to implement Semaphore
 
 */
-
-
-
 
 void Semaphore::Wait()
 {

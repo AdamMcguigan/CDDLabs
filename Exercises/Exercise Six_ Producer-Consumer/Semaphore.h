@@ -1,3 +1,8 @@
+/*
+    Adam Mcguigan 02/02/2023
+    GNU GENERAL PUBLIC LICENSE
+    Version 3, 29 June 2007
+*/
 #ifndef SEMAPHORE_H
 #define SEMAPHORE_H 
 #include <mutex>
