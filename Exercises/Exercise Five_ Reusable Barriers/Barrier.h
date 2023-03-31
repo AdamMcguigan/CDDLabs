@@ -9,16 +9,16 @@
 #define BARRIER_H
 #include "Semaphore.h"
 
-class Barrier {
+class Barrier{
     int numThreads;
     int count;
-    Semaphore* mutex = new Semaphore(1);
-    Semaphore* barrier = new Semaphore(0);
-    Semaphore* barrier2 = new Semaphore(1);
+    Semaphore *mutex = new Semaphore(1);
+    Semaphore *firstBarrier = new Semaphore(0);
+    Semaphore *secondBarrier = new Semaphore(1);
 public:
-    Barrier(int numThreads);
-    virtual ~Barrier();
-    void wait();
+  Barrier(int numThreads);
+  virtual ~Barrier();
+  void wait();
 };
 
 #endif

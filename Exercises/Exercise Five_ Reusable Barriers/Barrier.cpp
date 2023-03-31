@@ -5,50 +5,52 @@
 */
 
 // Code:
-#include "Semaphore.h"
 #include "Barrier.h"
 #include <iostream>
+
 Barrier::Barrier(int numThreads)
 {
     this->numThreads = numThreads;
     count = 0;
 }
-
 // Stops all semaphores once the first task is finished, it then resumes once all semaphores have reached the same point
+// Inspiration taken from the concurrency slides
 void Barrier::wait()
 {
     mutex->Wait();
     count += 1;
-    if (count == numThreads)
+    
+    if(count == numThreads)
     {
-        std::cout << std::endl << "Last" << std::endl;
-        barrier2->Wait();
-        barrier->Signal();
+        std::cout << std::endl << "Value: " << std::endl;
+        secondBarrier->Wait();
+        firstBarrier->Signal();
     }
+    
     mutex->Signal();
 
-    barrier->Wait();
-    barrier->Signal();
+    firstBarrier->Wait();
+    firstBarrier->Signal();
 
     mutex->Wait();
     count -= 1;
-    if (count == 0)
+    
+    if(count == 0)
     {
-        barrier->Wait();
-        barrier2->Signal();
+        firstBarrier->Wait();
+        secondBarrier->Signal();
     }
+    
     mutex->Signal();
-
-    barrier2->Wait();
-    barrier2->Signal();
+    secondBarrier->Wait();
+    secondBarrier->Signal();
 }
 
 Barrier::~Barrier()
 {
     delete mutex;
-    delete barrier;
-    delete barrier2;
+    delete firstBarrier;
+    delete secondBarrier;
 }
-
 //
 // Barrier.cpp ends here

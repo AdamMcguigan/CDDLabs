@@ -4,21 +4,22 @@
 #Equivalent(?) to a project file in VStudio -- only better!
 #See http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/ for info.
 
+OBJECTS = Semaphore.o main.o Barrier.o
+
+SOURCES = Semaphore.cpp main.cpp Barrier.cpp
+HEADERS = Semaphore.h Barrier.h
+
+OUTPUTS = main.out
 
 CC=g++
-CFLAGS= -std=c++11 -pthread
+CFLAGS= -std=c++11 -pthread -Wall
+LFLAGS= 
 
-#This rule says that each .o file depends on a .cpp file of the same name
-%.o: %.cpp
-	$(CC) -c -o $@ $< $(CFLAGS) $(DEBUGFLAGS)
-
-ALL: main.o Semaphore.o
-	$(CC) -o mutualExclusion main.o Semaphore.o $(CFLAGS) $(DEBUGFLAGS)
-	make CLEAN
-
-DEBUG: DEBUGFLAGS = -DDEBUG
-DEBUG: ALL
-
-#this is customary and just deletes all .o files
+#SIMPLE:
+#	$(CC) $(CFLAGS) $(SOURCES) $(HEADERS) $(OBJECTS)
+# -g is for debugging
+all: $(OBJECTS)
+	$(CC) -g $(OBJECTS) -o $(OUTPUTS) $(LFLAGS)
+	make CLEAN #run clean
 CLEAN:
-	rm *.o
+	rm -f $(OBJECTS) #removes all object by force
