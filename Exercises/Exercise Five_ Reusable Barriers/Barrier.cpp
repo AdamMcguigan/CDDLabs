@@ -13,8 +13,9 @@ Barrier::Barrier(int numThreads)
     this->numThreads = numThreads;
     count = 0;
 }
+
+/// Inspiration taken from the concurrency slides
 // Stops all semaphores once the first task is finished, it then resumes once all semaphores have reached the same point
-// Inspiration taken from the concurrency slides
 void Barrier::wait()
 {
     mutex->Wait();
@@ -22,7 +23,6 @@ void Barrier::wait()
     
     if(count == numThreads)
     {
-        std::cout << std::endl << "Value: " << std::endl;
         secondBarrier->Wait();
         firstBarrier->Signal();
     }
