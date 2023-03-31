@@ -4,16 +4,22 @@
 #Equivalent(?) to a project file in VStudio -- only better!
 #See http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/ for info.
 
-OBJS = Semaphore.o main.o
-SOURCE = Semaphore.cpp main.cpp
-HEADER = Semaphore.h
-OUT = main.out
-CC=g++
-LFLAGS = 
+# Name of the build file
+TARGET_EXEC := mutual_exclusion
 
-ALL: $(OBJS)
-	$(CC) $(OBJS) -o $(OUT) $(LFLAGS)
+CC=g++
+CFLAGS= -std=c++11 -pthread
+
+#This rule says that each .o file depends on a .cpp file of the same name
+%.o: %.cpp
+	$(CC) -c -o $@ $< $(CFLAGS) $(DEBUGFLAGS)
+
+ALL: Semaphore.o main.o 
+	$(CC) -o ${TARGET_EXEC} Semaphore.o main.o $(CFLAGS) $(DEBUGFLAGS)
+
+DEBUG: DEBUGFLAGS = -DDEBUG
+DEBUG: ALL
 
 #this is customary and just deletes all .o files
 CLEAN:
-	rm -f $(OBJS)
+	rm *.o

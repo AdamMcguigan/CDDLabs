@@ -22,17 +22,22 @@ Barrier::Barrier(int numThreads)
 */
 void Barrier::wait()
 {
+    // Wait for other thread to finish
     mutex->Wait();
+
+    // So, this thread can run, we increment the count telling us how many thread finished their action
     count += 1;
     
+    // If all the threads finished they have all arrived at the barrier
     if(count == numThreads)
     {
         secondBarrier->Wait();
+        std::cout << "Arrived at the Barrier: " << std::endl;
+        // We signal to the thread that it can continue
         firstBarrier->Signal();
     }
     
     mutex->Signal();
-
     firstBarrier->Wait();
     firstBarrier->Signal();
 

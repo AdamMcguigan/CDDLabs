@@ -1,56 +1,92 @@
-#include "Event.h"
 #include <iostream>
 #include <thread>
 #include <vector>
+#include <random>
+#include <memory>
+#include "SafeBuffer.h"
 
 
-static const int num_threads = 100;
-const int size=20;
+static const int num_threads = 10;
+const int size = 20;
 
+int characterCount = 0;
+
+
+std::random_device rd;
+std::mt19937 gen(rd());
+std::uniform_int_distribution<int> dist(0, 25);
+std::uniform_real_distribution<double> delay(0, 1);
 
 /*! \fn producer
-    \brief Creates events and adds them to buffer
+    \brief Creates chars and adds them to buffer
 */
+void producer(std::shared_ptr<SafeBuffer<char>> theBuffer, int numLoops){
+    for(int i=0;i<numLoops;++i) 
+    {
+        // Generate random character from A to Z
+        char c = 'a' + dist(gen);
+        
+        theBuffer->put(c);
+        std::cout << "Put " << c << " into buffer." << std::endl;
 
-void producer(std::shared_ptr<SafeBuffer<std::shared_ptr<Event>> theBuffer, int numLoops){
+        std::this_thread::sleep_for(std::chrono::duration<double>(delay(gen))); 
+    }
 
-  for(int i=0;i<numLoops;++i){
-    //Produce event and add to buffer
-    Event e= createEvent(i);
-    theBuffer.put(e);
-  }
-  
-
+    theBuffer->put('X');
 }
 
 /*! \fn consumer
-    \brief Takes events from buffer and consumes them
+    \brief Takes chars from buffer and consumes them
 */
+void consumer(std::shared_ptr<SafeBuffer<char>> theBuffer)
+{
+    int count = 0;
+    while (true)
+    {
+        char c = theBuffer->get();
+        std::cout << "Character taken from buffer: " << c << std::endl;
+        count++;
 
-void consumer(std::shared_ptr<SafeBuffer<std::shared_ptr Event>> theBuffer, int numLoops){
+        if (c == 'X')
+        {
+            std::cout << "X has been reached, exiting thread..." << std::endl;
+            characterCount += count;
+            break;
+        }
 
-  for(int i=0;i<numLoops;++i){
-    //Produce event and add to buffer
-    std::shared_ptr<Event> e= theBuffer->get();
-    e->consume();
-  }
-  
-
+        std::this_thread::sleep_for(std::chrono::duration<double>(delay(gen)));
+    }
 }
 
 int main(void){
+    std::vector<std::thread> producerThreads(num_threads);
+    std::vector<std::thread> consumerThreads(num_threads);
 
-  std::vector<std::thread> vt(num_threads);
-  std::shared_ptr<SafeBuffer<std::shared_ptr<Event>> aBuffer( new Buffer<shared_ptr Event>(size));
-  /**< Launch the threads  */
-  int i=0;
-  for(std::thread& t: vt){
-    t=std::thread(updateTask,aBarrier,10);
-  }
-  /**< Join the threads with the main thread */
-  for (auto& v :vt){
-      v.join();
-  }
-  std::cout << sharedVariable << std::endl;
-  return 0;
+    std::shared_ptr<SafeBuffer<char>> aBuffer(new SafeBuffer<char>(size));
+
+    /**< Launch the threads  */
+    for(std::thread& t : producerThreads)
+    {
+        t = std::thread(producer, aBuffer, 10);
+    }
+
+    for (std::thread& t : consumerThreads)
+    {
+      t = std::thread(consumer, aBuffer);
+    }
+
+    
+    /**< Join the threads with the main thread */
+    for (auto& v : producerThreads)
+    {
+          v.join();
+    }
+
+    for (auto& v : consumerThreads)
+    {
+        v.join();
+    }
+
+    std::cout << "Character count: " << characterCount << std::endl;
+    return 0;
 }

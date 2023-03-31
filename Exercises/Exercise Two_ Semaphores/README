@@ -1,21 +1,21 @@
-Author: Adam Mcguigan
-Date: 02/02/2023
+# Exercise 2/ Lab 1 - Semaphore
 
-The README file is a text filw that explains what a project is.
-It should contain information on
+This project shows an implementation of a custom Semaphore class
 
-1. GNU public license 3.0
-2. Adam Mcguigan
-3. Download from github, run the make file if needed then run the ./signal.out file
-4. You need C++,
-5. - TO DO section listing items that need to be completed (errors, missing features etc.)
-6. List of files and what they contain
-	html - Doxygen files
-	latex - Doxygen files
-	Doxyfile - Doxygen
-	main.cpp - contains main 
-	makefile - is ran to demonstrate the lab
-	Readme - contains all the info about the lab
-	Semaphore.cpp .h - semaphore file for signaling
-	signal.out - created file by the makefile  
-7. Any other relevent information
+## Requirements
+- Compatible with **Linux** only
+- A C++11 compiler
+- The MakeFile
+
+## Install
+2. Go to Exercises/ directory: cd Exercise Two_Semaphores
+3. Build project: make CLEAN && make
+4. Run: ./main.out
+
+## Project/files Content
+- **Sempahore:** implementation of a Semaphore
+- **main.cpp:** the traditional start point of the program, showing off the semaphore implementation
+
+## Licence
+This project is licensed under the **GNU General Public License v3.0**.
+See the LICENSE file in this directory.

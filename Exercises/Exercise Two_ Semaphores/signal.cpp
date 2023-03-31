@@ -1,38 +1,35 @@
-/*
-    Adam Mcguigan 02/02/2023
-    GNU GENERAL PUBLIC LICENSE
-    Version 3, 29 June 2007
-*/
 #include "Semaphore.h"
 #include <iostream>
 #include <thread>
 #include <unistd.h>
 /*! \class Signal
     \brief An Implementation of Threads Using Semaphores 
-
    Uses C++11 features such as mutex and condition variables to implement Semaphores in thread functions 
-
 */
 /*! displays a message first*/
 void taskOne(std::shared_ptr<Semaphore> theSemaphore, int delay){
-  sleep(delay);
-  std::cout <<"I ";
-  std::cout << "must ";
-  std::cout << "print ";
-  std::cout << "first"<<std::endl;
+    sleep(delay);
+
+    std::cout <<"I ";
+    std::cout << "must ";
+    std::cout << "print ";
+    std::cout << "first"<<std::endl;
+
+    // Signal other thread (taskTwo in this case) to stop waiting
+    theSemaphore->Signal();
 }
 /*! displays a message second*/
 void taskTwo(std::shared_ptr<Semaphore> theSemaphore){
-  std::cout <<"This ";
-  std::cout << "will ";
-  std::cout << "appear ";
-  std::cout << "second"<<std::endl;
+    // Block this thread until taskOne signal()
+    theSemaphore->Wait();
+
+    std::cout <<"This ";
+    std::cout << "will ";
+    std::cout << "appear ";
+    std::cout << "second"<<std::endl;
 }
 
-/*! \class Signal
-    \brief implementation of main
 
-*/
 int main(void){
   std::thread threadOne, threadTwo;
   std::shared_ptr<Semaphore> sem( new Semaphore);

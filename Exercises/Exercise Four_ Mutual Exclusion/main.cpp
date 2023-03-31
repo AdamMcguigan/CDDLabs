@@ -22,10 +22,14 @@ int sharedVariable=0;
 /*! displays a message that is split in to 2 sections to show how a rendezvous works*/
 void updateTask(std::shared_ptr<Semaphore> firstSem, int numUpdates) 
 {
+    // Wait only if another thread is already is accessing the resource (in this case, the current thread will be blocked because Semaphore count is 0)
+    // It won't wait if count is 1, but will decrement the counter, so other thread will wait
+    // So, this line either wait for another thread to signal, and when another thread signaled the current one, it will tell others to wait until done
     for (int i = 0; i < numUpdates; i++) {
         //UPDATE SHARED VARIABLE HERE!
         firstSem->Wait();
         sharedVariable++;
+        //Signal to the other thread that were done updating
         firstSem->Signal();
     }
 
@@ -35,6 +39,7 @@ void updateTask(std::shared_ptr<Semaphore> firstSem, int numUpdates)
 int main(void) 
 {
     std::vector<std::thread> vt(num_threads);
+    // Set the semaphore count to 1 initially
     std::shared_ptr<Semaphore> aSemaphore(new Semaphore(1));
 
     /**< Launch the threads  */

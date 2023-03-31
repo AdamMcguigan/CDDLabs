@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Lab 5 Producer/Consumer: SafeBuffer Class Reference</title>
+<title>Lab 5 Producer/Consumer: SafeBuffer&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -67,25 +67,34 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classSafeBuffer-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">SafeBuffer Class Reference</div>  </div>
+<div class="title">SafeBuffer&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>A <a class="el" href="classSafeBuffer.html" title="A SafeBuffer Implementation.">SafeBuffer</a> Implementation.  
+<p>A thread-safe buffer.  
  <a href="classSafeBuffer.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="SafeBuffer_8h_source.html">SafeBuffer.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2d0f0186d8e9b85d8736fadfc53d3423"><td class="memItemLeft" align="right" valign="top"><a id="a2d0f0186d8e9b85d8736fadfc53d3423"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>consume</b> ()</td></tr>
-<tr class="separator:a2d0f0186d8e9b85d8736fadfc53d3423"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a2d93ff85a5516b1bbb76b5a8caa96a"><td class="memItemLeft" align="right" valign="top"><a id="a5a2d93ff85a5516b1bbb76b5a8caa96a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>put</b> (<a class="el" href="classEvent.html">Event</a> e)</td></tr>
-<tr class="separator:a5a2d93ff85a5516b1bbb76b5a8caa96a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a946221808987664fe4f481ad54262d2c"><td class="memItemLeft" align="right" valign="top"><a id="a946221808987664fe4f481ad54262d2c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SafeBuffer</b> (int t_size)</td></tr>
+<tr class="separator:a946221808987664fe4f481ad54262d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcc6bddc8f887a743d24361132264c17"><td class="memItemLeft" align="right" valign="top"><a id="abcc6bddc8f887a743d24361132264c17"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSafeBuffer.html#abcc6bddc8f887a743d24361132264c17">put</a> (T item)</td></tr>
+<tr class="memdesc:abcc6bddc8f887a743d24361132264c17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put item in the buffer if no other thread is getting item fron it. <br /></td></tr>
+<tr class="separator:abcc6bddc8f887a743d24361132264c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdba533e3a5ce1d4e75be05bf6410c96"><td class="memItemLeft" align="right" valign="top"><a id="afdba533e3a5ce1d4e75be05bf6410c96"></a>
+T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSafeBuffer.html#afdba533e3a5ce1d4e75be05bf6410c96">get</a> ()</td></tr>
+<tr class="memdesc:afdba533e3a5ce1d4e75be05bf6410c96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an item from the buffer if no other thead is putting item in it. <br /></td></tr>
+<tr class="separator:afdba533e3a5ce1d4e75be05bf6410c96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A <a class="el" href="classSafeBuffer.html" title="A SafeBuffer Implementation.">SafeBuffer</a> Implementation. </p>
-<p>Uses C++11 features such as mutex and condition variables to implement <a class="el" href="classSafeBuffer.html" title="A SafeBuffer Implementation.">SafeBuffer</a> </p>
+<div class="textblock"><h3>template&lt;typename T&gt;<br />
+class SafeBuffer&lt; T &gt;</h3>
+
+<p>A thread-safe buffer. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="SafeBuffer_8h_source.html">SafeBuffer.h</a></li>
 <li>SafeBuffer.cpp</li>

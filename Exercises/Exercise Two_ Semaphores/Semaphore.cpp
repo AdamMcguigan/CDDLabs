@@ -4,6 +4,7 @@
     Version 3, 29 June 2007
 */
 #include "Semaphore.h"
+
 /*! \class Semaphore
     \brief A Semaphore Implementation
 
@@ -11,30 +12,44 @@
 
 */
 
-
-
-
 void Semaphore::Wait()
 {
-      std::unique_lock< std::mutex > lock(m_mutex);
-      m_condition.wait(lock,[&]()->bool{ return m_uiCount>0; });
-      --m_uiCount;
+    // Create ownership on a mutex
+    std::unique_lock< std::mutex > lock(m_mutex);
+    
+    // Block the current thread until m_uiCount > 0
+    m_condition.wait(lock,[&]()->bool{ return m_uiCount>0; });
+
+    // Decrement m_uiCount after the current thread has been unlocked (m_uiCount > 0)
+    --m_uiCount;
 }
 
 template< typename R,typename P >
 bool Semaphore::Wait(const std::chrono::duration<R,P>& crRelTime)
 {
-      std::unique_lock< std::mutex > lock(m_mutex);
-      if (!m_condition.wait_for(lock,crRelTime,[&]()->bool{ return m_uiCount>0; })){
+    // Create ownership on a mutex
+    std::unique_lock< std::mutex > lock(m_mutex);
+
+    // Block th current thread util m_uiCount > 0 OR after timeout following crRelTime duration
+    if (!m_condition.wait_for(lock,crRelTime,[&]()->bool{ return m_uiCount>0; })){
 	  return false;
-      }
-      --m_uiCount;
-      return true;
+    }
+
+    // Decrement m_uiCount after the current thread has been unlocked (m_uiCount > 0)
+    --m_uiCount;
+
+    return true;
 }
 
 void Semaphore::Signal()
 {
-      std::unique_lock< std::mutex > lock(m_mutex);
-      ++m_uiCount;
-      m_condition.notify_one();
+    // Create ownership on a mutex
+    std::unique_lock< std::mutex > lock(m_mutex);
+
+    // Imcrement m_uiCount, so, unlock every thread currently being locked (wait operation)
+    ++m_uiCount;
+
+    // Notify the waiting thread
+    m_condition.notify_one();
 }
+
