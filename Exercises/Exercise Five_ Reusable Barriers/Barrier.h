@@ -12,7 +12,8 @@
 #define BARRIER_H
 #include "Semaphore.h"
 
-class Barrier{
+class Barrier
+{
     int numThreads;
     int count;
     Semaphore *mutex = new Semaphore(1);
